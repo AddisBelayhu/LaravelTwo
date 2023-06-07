@@ -13,16 +13,25 @@ style="background-color: #acd6ba73;">
 <h1>User Authentication  Page</h1>
 </nav>
     @auth
-
+    
+    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
      <p><h2>You Logedin Successfuly, Thank You</h2></p>   
      <form action="/logout" method="post">
         @csrf
         <button>Logout</button>
     </form>
-
-
+    </div><br>
+    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
+        <form action="/create-post" method="post">
+            @csrf
+            <h2>Create a new Post</h2><br>
+            <input type="text" placeholder="title" name="title"><br><br>
+            <textarea name="body" placeholder="Enter Your idea" style="width:700px;"></textarea><br>
+            <button  style="padding:8px; margin:15px; width:100px;">Register</button>
+        </form>
+    </div>
     @else
-    <div class="container" style="border: 2px solid brown;">
+    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
         <h2>User Registraion</h2>
         <form method="post" action="/register">
             @csrf               <!-- page expired, security issue of cookies-->
@@ -36,7 +45,7 @@ style="background-color: #acd6ba73;">
         </form>
     </div><br><br>
 
-    <div class="container" style="border: 2px solid brown;">
+    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
         <h2>Login</h2>
         <form method="post" action="/login">
             @csrf               <!-- page expired, security issue of cookies-->
