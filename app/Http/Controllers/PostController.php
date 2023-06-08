@@ -8,7 +8,37 @@ use PhpParser\Node\Expr\PostDec;
 
 class PostController extends Controller
 {
+    public function deletePost(Post $post){
+        if(auth()->user()->id === $post['user_id']){
+            $post->delete();
+    }
+    return redirect('/');
+}
+    
+    Public function actullyUpdatePost(Post $post, Request $request){
+       //if the viewer copy the url of other user to update, the system must protect it for doing that.
+       if(auth()->user()->id !== $post['user_id']){
+        return redirect('/');
+    }
+     // validate the data
+     $incomingFields = $request->validate([
+        'title' => 'required',
+        'body' => 'required'
+     ]);
+     // Protect malisious codes like CSS, HTML to the title and textarea body, use bellow code
+     $incomingFields['title'] = strip_tags($incomingFields['title']);
+     $incomingFields['body'] = strip_tags($incomingFields['body']);
+     
+     $post->update($incomingFields);
+     return redirect('/');
+    }
+
     public function showEditPage(Post $post){
+        //if the viewer copy the url of other user to update, the system must protect it for doing that.
+        if(auth()->user()->id !== $post['user_id']){
+            return redirect('/');
+        }
+       
        return view('edit-post', ['post' => $post]);
     }
 

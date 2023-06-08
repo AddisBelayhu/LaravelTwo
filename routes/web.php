@@ -47,4 +47,6 @@ Route::post('/login',[UserController::class, 'loginuser']);
 
 //Route related to posts
 Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post', [PostController::class, 'showEditPage']);
+Route::get('/edit-post/{post}', [PostController::class, 'showEditPage']);
+Route::put('/edit-post/{post}', [PostController::class, 'actullyUpdatePost']); 
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']); 

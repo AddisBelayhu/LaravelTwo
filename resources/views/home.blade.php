@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>user registration</title>
 </head>
-<body style="background-color:aliceblue">
+<body>
 <nav class="navbar navbar-light justify-content-center fs-3 mb-5"
 style="background-color: #acd6ba73;">
 <h1>User Post View Page</h1>
@@ -21,7 +21,7 @@ style="background-color: #acd6ba73;">
         <button style= " padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2">Logout</button>
     </form>
     <br>
-    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+    <div class="container" style="box-shadow: 0 2px 4px rgba(74, 71, 71, 0.2);">
         <form action="/create-post" method="post">
             @csrf
             <h2>Create a new Post</h2><br>
@@ -37,7 +37,7 @@ style="background-color: #acd6ba73;">
    @foreach($posts as $post)
    <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px; border-radius:10px;">
    <h4>{{$post['title']}}</h4>
-       {{$post['body']}}  <br>
+      {{$post['body']}} <br>
               
        <p><a href="/edit-post/{{$post->id}}" style="font-size: 20px">Edit</a></p>
        <form action="/delete-post/{{$post->id}}" method="POST">
@@ -50,7 +50,7 @@ style="background-color: #acd6ba73;">
     </div>
     
     @else
-    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
+    <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
         <h2>User Registraion</h2>
         <form method="post" action="/register">
             @csrf               <!-- page expired, security issue of cookies-->
@@ -64,7 +64,7 @@ style="background-color: #acd6ba73;">
         </form>
     </div><br><br>
 
-    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
+    <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
         <h2>Login</h2>
         <form method="post" action="/login">
             @csrf               <!-- page expired, security issue of cookies-->
