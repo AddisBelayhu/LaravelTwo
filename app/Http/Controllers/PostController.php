@@ -8,6 +8,10 @@ use PhpParser\Node\Expr\PostDec;
 
 class PostController extends Controller
 {
+    public function showEditPage(Post $post){
+       return view('edit-post', ['post' => $post]);
+    }
+
     public function createPost(Request $request){
         $incomingFields = $request->validate([
             'title'=>'required',

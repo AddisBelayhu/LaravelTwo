@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use App\Models\Post;
 
 /*
@@ -24,15 +25,19 @@ Route::get('/', function () {
 */
 /*
 // the user see only his/her post from old to latest, but it misses the entire
-consept of relationships
+consept of relationships, it is from the perspective of a post
 Route::get('/', function () {
     $posts=Post::where('user_id', auth()->id())->get();
     return view('home', ['posts'=>$posts]);
 });
 */
 
+// the relationship is maintained and it is for the perspective of a user
 Route::get('/', function () {
-    $posts = auth()->user()->userCoolPosts()->latest()->get();
+    $posts=[];
+    if(auth()->check()){
+        $posts = auth()->user()->userCoolPosts()->latest()->get();
+    }    
     return view('home', ['posts'=>$posts]);
 });
 
@@ -42,3 +47,4 @@ Route::post('/login',[UserController::class, 'loginuser']);
 
 //Route related to posts
 Route::post('/create-post', [PostController::class, 'createPost']);
+Route::get('/edit-post', [PostController::class, 'showEditPage']);

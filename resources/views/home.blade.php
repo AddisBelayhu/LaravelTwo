@@ -10,15 +10,15 @@
 <body style="background-color:aliceblue">
 <nav class="navbar navbar-light justify-content-center fs-3 mb-5"
 style="background-color: #acd6ba73;">
-<h1>User Authentication  Page</h1>
+<h1>User Post View Page</h1>
 </nav>
     @auth
     
     
-     <p><h2> Login Successfuly, Thank You</h2></p>   
+     <p><h2>Login Successfuly, Thank You</h2></p>   
      <form action="/logout" method="post">
         @csrf
-        <button>Logout</button>
+        <button style= " padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2">Logout</button>
     </form>
     <br>
     <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
@@ -27,16 +27,24 @@ style="background-color: #acd6ba73;">
             <h2>Create a new Post</h2><br>
             <input type="text" placeholder="title" name="title"><br><br>
             <textarea name="body" placeholder="put your idea heate ..." style="width:700px;"></textarea><br>
-            <button  style="padding:8px; margin:15px; width:100px;">Save Post</button>
+            <button  style="padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Save Post</button>
         </form>
     </div>
-
-    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
-   <h2>All Posts</h2>
+     <br>
+     <!-- view post form-->
+   <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+   <h2>Your Posts</h2>
    @foreach($posts as $post)
-   <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px;">
-   <h3>{{$post['title']}}</h3>
-       {{$post['body']}}  
+   <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px; border-radius:10px;">
+   <h4>{{$post['title']}}</h4>
+       {{$post['body']}}  <br>
+              
+       <p><a href="/edit-post/{{$post->id}}" style="font-size: 20px">Edit</a></p>
+       <form action="/delete-post/{{$post->id}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button style="padding:4px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Delete</button>
+       </form>
    </div>
    @endforeach
     </div>
@@ -52,7 +60,7 @@ style="background-color: #acd6ba73;">
             style="padding:10px; margin:15px; width:350px;" >
             <input type="password" name="password" placeholder="password" autocomplete="off"
             style="padding:10px; margin:15px; width:250px;">
-            <button  style="padding:8px; margin:15px; width:100px;">Register</button>
+            <button  style="padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2">Register</button>
         </form>
     </div><br><br>
 
