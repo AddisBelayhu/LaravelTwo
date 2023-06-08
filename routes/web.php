@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,25 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*
+//desplay all posts in a home page
+Route::get('/', function () {
+    $posts=Post::all();
+    return view('home', ['posts'=>$posts]);
+});
+*/
+/*
+// the user see only his/her post from old to latest, but it misses the entire
+consept of relationships
+Route::get('/', function () {
+    $posts=Post::where('user_id', auth()->id())->get();
+    return view('home', ['posts'=>$posts]);
+});
+*/
 
 Route::get('/', function () {
-    return view('home');
+    $posts = auth()->user()->userCoolPosts()->latest()->get();
+    return view('home', ['posts'=>$posts]);
 });
 
 Route::post('/register', [UserController::class, 'registerUser']);

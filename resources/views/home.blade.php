@@ -14,22 +14,33 @@ style="background-color: #acd6ba73;">
 </nav>
     @auth
     
-    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
-     <p><h2>You Logedin Successfuly, Thank You</h2></p>   
+    
+     <p><h2> Login Successfuly, Thank You</h2></p>   
      <form action="/logout" method="post">
         @csrf
         <button>Logout</button>
     </form>
-    </div><br>
-    <div class="container" style="border: 2px solid rgb(130, 81, 81);">
+    <br>
+    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
         <form action="/create-post" method="post">
             @csrf
             <h2>Create a new Post</h2><br>
             <input type="text" placeholder="title" name="title"><br><br>
-            <textarea name="body" placeholder="Enter Your idea" style="width:700px;"></textarea><br>
-            <button  style="padding:8px; margin:15px; width:100px;">Register</button>
+            <textarea name="body" placeholder="put your idea heate ..." style="width:700px;"></textarea><br>
+            <button  style="padding:8px; margin:15px; width:100px;">Save Post</button>
         </form>
     </div>
+
+    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+   <h2>All Posts</h2>
+   @foreach($posts as $post)
+   <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px;">
+   <h3>{{$post['title']}}</h3>
+       {{$post['body']}}  
+   </div>
+   @endforeach
+    </div>
+    
     @else
     <div class="container" style="border: 2px solid rgb(130, 81, 81);">
         <h2>User Registraion</h2>
