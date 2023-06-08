@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Edit Post</title>
 </head>
-<body style="background-color:aliceblue">
-    <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+<body>
+    <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); background-color:rgb(245, 246, 247);">
         <h2>Edit Post</h2>
         <form action="/edit-post/{{$post->id}}" method="POST"> 
             @csrf

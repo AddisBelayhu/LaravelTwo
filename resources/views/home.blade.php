@@ -1,3 +1,4 @@
+<!--https://www.youtube.com/watch?v=cDEVWbz2PpQ-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,9 +14,9 @@ style="background-color: #acd6ba73;">
 <h1>User Post View Page</h1>
 </nav>
     @auth
-    
-    
+        
      <p><h2>Login Successfuly, Thank You</h2></p>   
+   
      <form action="/logout" method="post">
         @csrf
         <button style= " padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2">Logout</button>
@@ -33,10 +34,11 @@ style="background-color: #acd6ba73;">
      <br>
      <!-- view post form-->
    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
-   <h2>Your Posts</h2>
+   
    @foreach($posts as $post)
+   <h3> Posted by: </h3> <h3 style="color:rgb(94, 246, 195); font-style:italic">{{$post->user->name}}</h3>
    <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px; border-radius:10px;">
-   <h4>{{$post['title']}}</h4>
+   <h4>{{$post['title']}} by </h4>
       {{$post['body']}} <br>
               
        <p><a href="/edit-post/{{$post->id}}" style="font-size: 20px">Edit</a></p>
@@ -67,10 +69,9 @@ style="background-color: #acd6ba73;">
     <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
         <h2>Login</h2>
         <form method="post" action="/login">
-            @csrf               <!-- page expired, security issue of cookies-->
+            @csrf               <!-- page expired, security issue of cookies, csrf attack-->
             <input type="text" name="loginname" placeholder="name" autocomplete="off"
-            style="padding:10px; margin:15px; width:400px;">
-           
+            style="padding:10px; margin:15px; width:400px;">           
             <input type="password" name="loginpassword" placeholder="password" autocomplete="off"
             style="padding:10px; margin:15px; width:250px;"><br>
             <button style="padding:8px; margin:15px; width:100px;">Login</button>

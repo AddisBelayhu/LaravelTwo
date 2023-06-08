@@ -10,5 +10,10 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'body', 'user_id'];
+// set inner join relatinship between users and posts table
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }
+
