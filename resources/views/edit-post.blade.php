@@ -8,8 +8,8 @@
     <title>Edit Post</title>
 </head>
 <body>
-    <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); background-color:rgb(245, 246, 247);">
-        <h2>Edit Post</h2>
+    <div class="container" style="background-color:rgb(246, 245, 245); padding: 10px; margin:center; border-radius:10px; margin-top: 150px;">
+        <h5>Edit Post</h5><br>
         <form action="/edit-post/{{$post->id}}" method="POST"> 
             @csrf
             @method('PUT')

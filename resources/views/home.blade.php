@@ -11,11 +11,11 @@
 <body>
 <nav class="navbar navbar-light justify-content-center fs-3 mb-5"
 style="background-color: #acd6ba73;">
-<h1>User Post View Page</h1>
+<h4>User Post View Page</h4>
 </nav>
     @auth
         
-     <p><h2>Login Successfuly, Thank You</h2></p>   
+     <p><h5>Login Successfuly, Thank You</h5></p>   
    
      <form action="/logout" method="post">
         @csrf
@@ -25,7 +25,7 @@ style="background-color: #acd6ba73;">
     <div class="container" style="box-shadow: 0 2px 4px rgba(74, 71, 71, 0.2);">
         <form action="/create-post" method="post">
             @csrf
-            <h2>Create a new Post</h2><br>
+            <h5>Create a new Post</h5><br>
             <input type="text" placeholder="title" name="title"><br><br>
             <textarea name="body" placeholder="put your idea heate ..." style="width:700px;"></textarea><br>
             <button  style="padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Save Post</button>
@@ -36,9 +36,9 @@ style="background-color: #acd6ba73;">
    <div class="container" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
    
    @foreach($posts as $post)
-   <h3> Posted by: </h3> <h3 style="color:rgb(94, 246, 195); font-style:italic">{{$post->user->name}}</h3>
-   <div style="background-color:rgb(222, 220, 220); padding: 10px; margin:15px; border-radius:10px;">
-   <h4>{{$post['title']}} by </h4>
+   <h5> Posted by: </h5> <h5 style="color:rgb(94, 246, 195); font-style:italic">{{$post->user->name}}</h5>
+   <div style="background-color:rgb(246, 245, 245); padding: 10px; margin:15px; border-radius:10px;">
+   <h5>{{$post['title']}}</h5>
       {{$post['body']}} <br>
               
        <p><a href="/edit-post/{{$post->id}}" style="font-size: 20px">Edit</a></p>
@@ -53,7 +53,7 @@ style="background-color: #acd6ba73;">
     
     @else
     <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
-        <h2>User Registraion</h2>
+        <h5>User Registraion</h5>
         <form method="post" action="/register">
             @csrf               <!-- page expired, security issue of cookies-->
             <input type="text" name="name" placeholder="name" autocomplete="off"
@@ -67,14 +67,14 @@ style="background-color: #acd6ba73;">
     </div><br><br>
 
     <div class="container my-5" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
-        <h2>Login</h2>
+        <h5>Login</h5>
         <form method="post" action="/login">
             @csrf               <!-- page expired, security issue of cookies, csrf attack-->
             <input type="text" name="loginname" placeholder="name" autocomplete="off"
             style="padding:10px; margin:15px; width:400px;">           
             <input type="password" name="loginpassword" placeholder="password" autocomplete="off"
             style="padding:10px; margin:15px; width:250px;"><br>
-            <button style="padding:8px; margin:15px; width:100px;">Login</button>
+            <button style="padding:8px; margin:15px; width:100px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2"">Login</button>
         </form>
     </div>
     @endauth
